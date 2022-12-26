@@ -1,0 +1,32 @@
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner scnr = new Scanner (System.in);
+      System.out.println("How many elements does your array have?");
+      int numberOfElements= scnr.nextInt();
+      int[]array= new int[numberOfElements];
+      System.out.println("Type your array please:");
+      
+        for (int a=0;a<array.length;a++){
+        array[a]=scnr.nextInt();}
+      
+       PrintArrayElements(array);  
+    System.out.println("Enter the element that you want in the beginning :");
+    int numberToBeInserted= scnr.nextInt();
+    insertAtBeginning(array,numberToBeInserted);
+    PrintArrayElements(array);
+    }
+public static void PrintArrayElements(int[]array){
+    for (int i=0;i<array.length;i++){
+        System.out.print(array[i]+" ");
+    }
+    System.out.println("");
+}
+    
+public static void insertAtBeginning(int[]array,int numberToBeInserted){
+    for (int j=array.length-1;j>0;j--){
+    array[j]=array[j-1];}
+    array[0]=numberToBeInserted;
+    
+}}
