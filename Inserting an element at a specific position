@@ -1,0 +1,35 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scnr = new Scanner (System.in);
+        System.out.println("How many elements does your array have ?");
+        int numberOfElements = scnr.nextInt();
+        System.out.println("Please type your array:");
+        int[] array= new int[numberOfElements];
+        for (int i=0;i<numberOfElements;i++)
+        {
+        array[i]= scnr.nextInt();}
+        printArray(array);
+        System.out.println("At which position do you want the new element to be inserted?");
+        int position = scnr.nextInt();
+        System.out.println("What element do you want to insert?");
+        int elementToBeInserted= scnr.nextInt();
+        insertAtSpecificPosition(array,position,elementToBeInserted);
+        printArray(array);
+        }
+
+   public static void printArray(int[]array){
+        for (int j=0;j<array.length;j++){
+            System.out.print(array[j]+" ");
+        }
+         System.out.println("");
+                   }
+public static void insertAtSpecificPosition(int[]array,int position,int element)
+
+{
+    for (int k= array.length-1;k>=position;k--){
+        array[k]=array[k-1];}
+    array[position-1]=element;
+    }
+}
+
