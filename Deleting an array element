@@ -1,0 +1,69 @@
+import java.util.Scanner;
+public class Main 
+{
+    public static void main(String[] args) 
+    {
+        Scanner scnr = new Scanner (System.in);
+        System.out.println("How many elements does your array have ?");
+        int numberOfElements= scnr.nextInt();
+       int[]array= new int[numberOfElements];
+       System.out.println("Please type your array:");
+        for (int i=0;i<array.length;i++)
+        {
+            array[i]=scnr.nextInt();
+        }
+        printArray(array);
+        System.out.println("What element do you wish to delete?");
+        int elementToBeDeleted= scnr.nextInt();
+       int[] newArray=deleteElement(array,elementToBeDeleted,numberOfElements);
+      printArray(newArray);
+    }
+    public static void printArray(int[]array)
+    {
+        for (int j=0;j<array.length;j++) 
+        {
+            System.out.print(array[j] + " ");
+        }
+        System.out.println("");
+        }
+  public static int[] deleteElement(int[]array,int elementToBeDeleted,int arrayLength)
+  {
+  int count=arrayLength;
+
+      for (int k=0;k<array.length;k++) 
+      {
+          if (array[k] == elementToBeDeleted) 
+          {
+              count--;
+              break;
+          }
+          else
+          {
+              continue;
+          }
+      }
+      int[]newArray= new int[count];
+      for (int a=0;a<array.length;a++)
+      {
+          if (array[a]==elementToBeDeleted)
+          {
+
+          for (int x= a;x<array.length-1;x++)
+          {
+                  newArray[x]=array[x+1];
+              }
+            for (int z=0;z<a;z++)
+            {
+                newArray[z]=array[z];
+            }
+              break;
+          }
+          else
+          {
+              newArray[a]=array[a];
+              continue;
+          }
+      }
+    return newArray;
+  }
+}
