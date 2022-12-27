@@ -1,0 +1,51 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scnr = new Scanner(System.in);
+        System.out.println("How many elements does your array have ?");
+        int numberOfElements = scnr.nextInt();
+        int[] array = new int[numberOfElements];
+        System.out.println("Please type your array:");
+        for (int i = 0; i < array.length; i++) {
+            array[i] = scnr.nextInt();
+        }
+        printArray(array);
+        System.out.println("What index value do you wish to delete?");
+        int index = scnr.nextInt();
+        int[] newArray = deleteIndex(array, index, numberOfElements);
+        printArray(newArray);
+    }
+
+    public static void printArray(int[] array) {
+        for (int j = 0; j < array.length; j++) {
+            System.out.print(array[j] + " ");
+        }
+        System.out.println("");
+    }
+
+    public static int[] deleteIndex(int[] array, int index, int arrayLength) {
+        int[] newArray = new int [arrayLength - 1];
+
+        for (int k = 0; k < arrayLength; k++) {
+
+            if(index>=arrayLength){
+                System.out.println("The index required to be deleted is out of bounds");
+                break;
+            }
+
+          else  if (k == index) {
+                for (int x = k; x < array.length - 1; x++) {
+                    newArray[x] = array[x + 1];
+                }
+                for (int y = 0; y < k; y++) {
+                    newArray[y] = array[y];
+                }
+                break;
+            }
+            else {
+                continue;
+            }
+        }
+        return newArray;
+    }
+}
