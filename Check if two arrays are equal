@@ -1,0 +1,80 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scnr = new Scanner(System.in);
+        System.out.println("How many elements does your first array have ?");
+        int numberOfElementsOfFirstArray = scnr.nextInt();
+        int[] firstArray = new int[numberOfElementsOfFirstArray];
+        System.out.println("Please type your first array");
+        for (int i = 0; i < numberOfElementsOfFirstArray; i++) {
+            firstArray[i] = scnr.nextInt();
+        }
+        System.out.println("How many elements does your second array have ?");
+        int numberOfElementsOfSecondArray = scnr.nextInt();
+        int[] secondArray = new int[numberOfElementsOfSecondArray];
+        System.out.println("Please type your second array");
+        for (int j = 0; j < numberOfElementsOfSecondArray; j++) {
+            secondArray[j] = scnr.nextInt();
+        }
+
+        System.out.println(" The first array is:");
+        printArray(firstArray);
+        System.out.println("The second array is:");
+        printArray(secondArray);
+        System.out.println("The first array in ascending order is:");
+        sortedArray(firstArray);
+        printArray(firstArray);
+        System.out.println("The second array in ascending order is:");
+        sortedArray(secondArray);
+        printArray(secondArray);
+        boolean output=checkIfEqual(firstArray,secondArray);
+        if (output == true){
+            System.out.println("The two arrays are equal.");}
+        else{
+            System.out.println("The two arrays are not equal.");}
+
+
+    }
+
+    public static void printArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+    }
+
+    public static void sortedArray(int[] array) {
+        int temp;
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+                else{
+                    continue;
+                }
+            }
+        }
+    }
+    public static boolean checkIfEqual(int[]firstArray,int[]secondArray){
+      boolean output=false;
+        if (firstArray.length!= secondArray.length){
+          output= false;
+          }
+        else {
+            for (int k=0;k<firstArray.length;k++){
+                if (firstArray[k]!=secondArray[k]){
+                    output= false;
+                    break;
+                }
+                else{
+                    output= true;
+                    continue;
+                }
+            }
+        }
+        return output;
+}
+}
